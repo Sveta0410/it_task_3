@@ -9,6 +9,13 @@ public class Main {
         System.out.println(findZip("all zip files are zipped"));
         System.out.println(findZip("all zip files are compressed"));
 
+        System.out.println("Задание 3");
+        System.out.println(checkPerfect(6));
+        System.out.println(checkPerfect(28));
+        System.out.println(checkPerfect(496));
+        System.out.println(checkPerfect(12));
+        System.out.println(checkPerfect(97));
+
     }
 
     // возвраащаем число решений квадратного уравнения ax^2+bx+c=0
@@ -34,4 +41,20 @@ public class Main {
             // позиция первого вхождения zip + длина zip + позиция второго вхождения в обрезанной строке
         }
     }
+    // проверяем, можно ли записать число как сумму его множителей, исключая само число (6=1+2+3)
+    public static boolean checkPerfect(int number) {
+        int sum = 1; // т.к. все числа делятся на 1
+        // 6=1*2*3, 6%2==0 => 6%(6/3)==0
+        for (int i = 2; i <= Math.sqrt(number); i++){
+            if (number % i == 0){
+                sum += i;
+                // если множитель равен корню исходного числа, то его "пару" добавлять не надо, т.к. это то же число
+                if (i != Math.sqrt(number)){
+                    sum += number / i;
+                }
+            }
+        }
+        return sum == number;
+    }
+
 }
