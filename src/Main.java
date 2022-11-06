@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Задание 1");
@@ -31,7 +33,16 @@ public class Main {
         System.out.println(isValidHexCode("#CD5C&C"));
         System.out.println(isValidHexCode("CD5C5C"));
 
-
+        System.out.println("Задание 6");
+        int[] array1 = new int[] {1, 3, 4, 4, 4};
+        int[] array2 = new int[] {2, 5, 7};
+        System.out.println(same(array1, array2));
+        int[] array3 = new int[] {9, 8, 7, 6};
+        int[] array4 = new int[] {4, 4, 3, 1};
+        System.out.println(same(array3, array4));
+        int[] array5 = new int[] {2};
+        int[] array6 = new int[] {3, 3, 3, 3, 3};
+        System.out.println(same(array5, array6));
     }
 
     // возвраащаем число решений квадратного уравнения ax^2+bx+c=0
@@ -101,5 +112,19 @@ public class Main {
         } else{
             return true;
         }
+    }
+    // возвращаем true, если два массива имеют одинаковое количество уникальных элементов, и false в противном случае
+    public static boolean same(int[] arr1, int[] arr2) {
+        return removeDublicates(arr1).size() == removeDublicates(arr2).size();
+    }
+    // вспомогательная функция, позволяющая создать из исходного массива список с уникальными элементами
+    public static List<Integer> removeDublicates(int[] arr) {
+        List<Integer> newArr = new ArrayList<Integer>();
+        for (int num : arr){
+            if (!(newArr.contains(num))){
+                newArr.add(num);
+            }
+        }
+        return newArr;
     }
 }
