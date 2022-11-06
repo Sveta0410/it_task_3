@@ -22,6 +22,15 @@ public class Main {
         System.out.println(flipEndChars("Ada"));
         System.out.println(flipEndChars("z"));
 
+        System.out.println("Задание 5");
+        System.out.println(isValidHexCode("#CD5C5C"));
+        System.out.println(isValidHexCode("#EAECEE"));
+        System.out.println(isValidHexCode("#eaecee"));
+        System.out.println(isValidHexCode("#CD5C58C"));
+        System.out.println(isValidHexCode("#CD5C5Z"));
+        System.out.println(isValidHexCode("#CD5C&C"));
+        System.out.println(isValidHexCode("CD5C5C"));
+
 
     }
 
@@ -76,6 +85,21 @@ public class Main {
             return myString.charAt(myString.length() - 1) +
                     myString.substring(1, myString.length() - 1) +
                     myString.charAt(0);
+        }
+    }
+    // определяем, является ли строка допустимым шестнадцатеричным кодом
+    public static boolean isValidHexCode(String myString) {
+        if (myString.charAt(0) != '#'){
+            return false;
+        } else if (myString.length() != 7){
+            // 7 = 6 + #
+            return false;
+        } else if (!myString.substring(1, myString.length()).matches("[A-Fa-f0-9]{6}")){
+            //регулярное выражение (цифры 0-9 или буквы A-F, a-f,  кол-во символов 6) [рассматриваем подстроку(без #)]
+            // !ВАЖНО! рассматриваем противоположное событие (строка не подошла по параметрам -> возвращаем false)
+            return false;
+        } else{
+            return true;
         }
     }
 }
