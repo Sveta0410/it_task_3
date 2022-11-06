@@ -16,6 +16,13 @@ public class Main {
         System.out.println(checkPerfect(12));
         System.out.println(checkPerfect(97));
 
+        System.out.println("Задание 4");
+        System.out.println(flipEndChars("Cat, dog, and mouse."));
+        System.out.println(flipEndChars("ada"));
+        System.out.println(flipEndChars("Ada"));
+        System.out.println(flipEndChars("z"));
+
+
     }
 
     // возвраащаем число решений квадратного уравнения ax^2+bx+c=0
@@ -56,5 +63,19 @@ public class Main {
         }
         return sum == number;
     }
-
+    // меняем в строке первый и последний символ
+    public static String flipEndChars(String myString) {
+        if (myString.length() < 2){
+            // если длина строки меньше 2, возвращаем "несовместимо."
+            return "Incompatible.";
+        } else if (myString.charAt(0) == myString.charAt(myString.length() - 1)){
+            // если первый и последний символы совпадают, возвращаем "два-это пара."
+            return "Two's a pair.";
+        } else {
+            // substring =  от какого-то значения i (включительно) до j (НЕ включаем)
+            return myString.charAt(myString.length() - 1) +
+                    myString.substring(1, myString.length() - 1) +
+                    myString.charAt(0);
+        }
+    }
 }
