@@ -43,6 +43,14 @@ public class Main {
         int[] array5 = new int[] {2};
         int[] array6 = new int[] {3, 3, 3, 3, 3};
         System.out.println(same(array5, array6));
+
+        System.out.println("Задание 7");
+        System.out.println(isKaprekar(3));
+        System.out.println(isKaprekar(5));
+        System.out.println(isKaprekar(297));
+        System.out.println(isKaprekar(0));
+        System.out.println(isKaprekar(1));
+
     }
 
     // возвраащаем число решений квадратного уравнения ax^2+bx+c=0
@@ -126,5 +134,20 @@ public class Main {
             }
         }
         return newArr;
+    }
+    // возвращаем true, если это число Капрекара, и false, если это не так
+    // (число, кот. после возведения в квадрат и разбиения на две части равно сумме двух полученных новых чисел)
+    public static boolean isKaprekar(int number) {
+        int nSquare = number * number;
+        String numStr = Integer.toString(nSquare);
+        int numLen = numStr.length();
+        if (numLen == 1) {
+            // если количество цифр == 1
+            return nSquare == number;
+        } else{
+            int left = Integer.parseInt(numStr.substring(0, numLen / 2));
+            int right = Integer.parseInt(numStr.substring(numLen / 2));
+            return left + right == number;
+        }
     }
 }
