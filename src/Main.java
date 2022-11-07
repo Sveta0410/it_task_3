@@ -51,6 +51,11 @@ public class Main {
         System.out.println(isKaprekar(0));
         System.out.println(isKaprekar(1));
 
+        System.out.println("Задание 8");
+        System.out.println(longestZero("01100001011000"));
+        System.out.println(longestZero("100100100"));
+        System.out.println(longestZero("11111"));
+
     }
 
     // возвраащаем число решений квадратного уравнения ax^2+bx+c=0
@@ -148,6 +153,16 @@ public class Main {
             int left = Integer.parseInt(numStr.substring(0, numLen / 2));
             int right = Integer.parseInt(numStr.substring(numLen / 2));
             return left + right == number;
+        }
+    }
+    // возвращаем самую длинную последовательность последовательных нулей в двоичной строке
+    public static String longestZero(String number) {
+        if (number.contains("0")){
+            String[] zeroes = number.split("1+");
+            Arrays.sort(zeroes);
+            return zeroes[zeroes.length - 1];
+        } else {
+            return "";
         }
     }
 }
