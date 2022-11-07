@@ -61,6 +61,10 @@ public class Main {
         System.out.println(nextPrime(24));
         System.out.println(nextPrime(11));
 
+        System.out.println("Задание 10");
+        System.out.println(rightTriangle(3, 4, 5));
+        System.out.println(rightTriangle(145, 105, 100));
+        System.out.println(rightTriangle(70, 130, 110));
     }
 
     // возвраащаем число решений квадратного уравнения ax^2+bx+c=0
@@ -195,5 +199,11 @@ public class Main {
             }
         }
         return true;
+    }
+
+    // проверяем, являются ли числа x, y, и z рёбрами прямоугольного треугольника
+    public static boolean rightTriangle(int x, int y, int z) {
+        // проверяем по теореме Пифагора (если x - гипотенуза ||(или) y - гипотенуза || z - гипотенуза)
+        return (x * x - y * y - z * z == 0) || (y * y - x * x - z * z == 0) || (z * z - x * x - y * y == 0);
     }
 }
