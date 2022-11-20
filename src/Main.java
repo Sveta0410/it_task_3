@@ -128,16 +128,12 @@ public class Main {
     public static boolean isValidHexCode(String myString) {
         if (myString.charAt(0) != '#') {
             return false;
-        } else if (myString.length() != 7) {
+        } else //регулярное выражение (цифры 0-9 или буквы A-F, a-f,  кол-во символов 6) [рассматриваем подстроку(без #)]
+            // !ВАЖНО! рассматриваем противоположное событие (строка не подошла по параметрам -> возвращаем false)
+            if (myString.length() != 7) {
             // 7 = 6 + #
             return false;
-        } else if (!myString.substring(1, myString.length()).matches("[A-Fa-f0-9]{6}")) {
-            //регулярное выражение (цифры 0-9 или буквы A-F, a-f,  кол-во символов 6) [рассматриваем подстроку(без #)]
-            // !ВАЖНО! рассматриваем противоположное событие (строка не подошла по параметрам -> возвращаем false)
-            return false;
-        } else {
-            return true;
-        }
+        } else return myString.substring(1, myString.length()).matches("[A-Fa-f0-9]{6}");
     }
 
     // возвращаем true, если два массива имеют одинаковое количество уникальных элементов, и false в противном случае
